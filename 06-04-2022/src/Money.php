@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Hillel;
 
+use Exception;
+
 class Money
 {
     private int|float $amount;
@@ -47,7 +49,7 @@ class Money
     public function add(Money $money): void
     {
         if (!$this->currency->equals($money->currency)){
-            throw new \Exception('Money is not equal');
+            throw new Exception('Money is not equal');
         }
         $this->amount = $this->amount + $money->getAmount();
     }
