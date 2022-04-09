@@ -7,11 +7,10 @@ class HillelAutoloader
 
     public function addNamespace(string $hillel, string $rootDir)
     {
-        if (is_dir($rootDir)) {
-            $this->namespaces[$hillel] = $rootDir;
-            return true;
+        if (!is_dir($rootDir)) {
+            throw new Exception('Not dor');
         }
-        return false;
+        $this->namespaces[$hillel] = $rootDir;
     }
 
     public function register()
