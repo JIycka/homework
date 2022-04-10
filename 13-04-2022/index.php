@@ -1,6 +1,6 @@
 <?php
 
-require_once 'vendor/autoload.php';
+require_once '../autoload.php';
 
 $item = [
     'price' => 1750000,
