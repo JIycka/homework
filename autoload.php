@@ -18,7 +18,7 @@ class HillelAutoloader
         spl_autoload_register(array($this, 'autoload'));
     }
 
-    protected function autoload($class)
+    public function autoload($class)
     {
         $pathParts = explode('\\', $class);
 
