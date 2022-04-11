@@ -26,12 +26,19 @@ class Product
 
     public function __get($variable)
     {
-        return $this->casts[$variable]::get($this->$variable);
+        if (array_key_exists($variable, $this->casts)) {
+            return $this->casts[$variable]::get($this->$variable);
+        }
+        return $this->$variable;
     }
 
     public function __set($variable, $value)
     {
-        $this->$variable = $this->casts[$variable]::set($value);
+        if (array_key_exists($variable, $this->casts)) {
+            $this->$variable = $this->casts[$variable]::set($value);
+            return;
+        }
+        $this->$variable = $value;
     }
 
     public function __toString(): string
